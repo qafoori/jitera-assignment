@@ -8,6 +8,6 @@ export const publicRoutes: RoutesObject = {
   home: {
     get: '/',
     return: <HomePage />,
-    title: 'React Coding Assignment - Jitera',
+    title: 'Home Page',
   },
 }

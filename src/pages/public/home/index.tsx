@@ -2,6 +2,7 @@ import { FC, useEffect } from 'react'
 import { guysActions } from 'store/actions'
 import { useDispatch, useSelector } from 'react-redux'
 import { RootState } from 'store'
+import { AppLayout } from 'components/layouts/app'
 
 export const HomePage: FC = () => {
   const dispatch = useDispatch()
@@ -17,5 +18,9 @@ export const HomePage: FC = () => {
     }
   }, [guys])
 
-  return <p>home page</p>
+  return (
+    <AppLayout title="Home Page">
+      <p>home page</p>
+    </AppLayout>
+  )
 }
