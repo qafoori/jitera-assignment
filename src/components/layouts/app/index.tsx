@@ -18,7 +18,7 @@ export const AppLayout: FC<Lib.T.AppLayoutProps> = ({ children, title }) => {
             <img src={get.collapsed ? '/single-logo.png' : '/typography-logo.png'} alt="Jitera" className="logo" />
           </Link>
 
-          <Menu theme="dark" mode="inline" defaultSelectedKeys={['1']}>
+          <Menu theme="dark" mode="inline" defaultSelectedKeys={['0']}>
             {get.menuItems.map(({ title, linkTo, icon }, index) => (
               <Item key={index} icon={icon}>
                 <Link to={linkTo}>{title}</Link>
