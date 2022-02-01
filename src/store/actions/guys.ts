@@ -3,7 +3,7 @@ import { Guy } from 'common/models/guy'
 import { ReducerType } from 'common/typing/reducer-payload.type'
 
 /** ⸻⸻⸻⸻⸻⸻⸻⸻⸻---
- * Guys actions
+ * get guys actions
  */
 export const getGuysRequest = (): ReducerType<null> => {
   return {

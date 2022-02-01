@@ -1,1 +1,1 @@
-export * as Guys from './guys'
+export * as guysActions from './guys'
