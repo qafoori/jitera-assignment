@@ -13,7 +13,7 @@ export const AppLayout: FC<Lib.T.AppLayoutProps> = ({ children, title }) => {
   return (
     <Lib.S.AppLayoutContainer>
       <Layout>
-        <Sider trigger={null} collapsible collapsed={get.collapsed}>
+        <Sider trigger={null} collapsible collapsed={get.collapsed} id="sidebar" className={get.collapsed ? 'close' : ''}>
           <Link to="/">
             <img src={get.collapsed ? '/single-logo.png' : '/typography-logo.png'} alt="Jitera" className="logo" />
           </Link>
@@ -36,6 +36,7 @@ export const AppLayout: FC<Lib.T.AppLayoutProps> = ({ children, title }) => {
               ghost
               size="large"
               className="collapseButton"
+              id="collapseButton"
             />
 
             <Lib.S.PageTitle>{title}</Lib.S.PageTitle>
