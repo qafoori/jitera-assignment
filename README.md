@@ -1,6 +1,8 @@
 ## Hi there 👋
 First of all, let me thank you for reviewing this repo.
 
+> ## [Online demo was deployed on vercel](https://jitera-assignment-239hyzdtw-hrghafoori.vercel.app/)
+
 Here are some steps before you run this application on your localhost:
 
 1. After you cloned the repo, kindly create a `.env` file in the root of project
