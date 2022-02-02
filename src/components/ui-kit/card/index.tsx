@@ -11,13 +11,13 @@ export const Card: FC<Lib.T.CardProps> = props => {
 
   const cardActions = [
     <Popover content={`Call ${name}`} title={null}>
-      <Typography.Link href={`tel:${phone}`}>
+      <Typography.Link tabIndex={1} href={`tel:${phone}`}>
         <Icons.PhoneFilled />
       </Typography.Link>
     </Popover>,
 
     <Popover content={`Give a high-five to ${name}`} title={null}>
-      <Icons.HeartFilled style={{ color: liked ? '#2dcea2' : 'gray' }} onClick={toggleLike} />
+      <Icons.HeartFilled tabIndex={2} style={{ color: liked ? '#2dcea2' : 'gray' }} onClick={toggleLike} />
     </Popover>,
 
     <Popover content={`More about ${name}`} title={null}>
@@ -28,7 +28,7 @@ export const Card: FC<Lib.T.CardProps> = props => {
         cancelText="Forget it"
         onConfirm={() => setModal(true)}
       >
-        <Icons.EllipsisOutlined />
+        <Icons.EllipsisOutlined tabIndex={3} />
       </Popconfirm>
     </Popover>,
   ]
