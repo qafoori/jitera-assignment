@@ -1,48 +1,50 @@
-import { FC, useEffect } from 'react'
-import { guysActions } from 'store/actions'
-import { useDispatch, useSelector } from 'react-redux'
+import { FC } from 'react'
+import { useSelector } from 'react-redux'
 import { RootState } from 'store'
 import { AppLayout } from 'components/layouts/app'
 import { Card, LoadingCart } from 'components/ui-kit/card'
-import { Col, Row } from 'antd'
+import { Empty, Row, Col } from 'antd'
+import * as Lib from './lib'
 
 export const HomePage: FC = () => {
-  const dispatch = useDispatch()
+  Lib.H.useHomePage()
   const { guys } = useSelector((root: RootState) => root.guysReducer)
-
-  useEffect(() => {
-    dispatch(guysActions.getGuysRequest())
-  }, [])
-
-  useEffect(() => {
-    if (guys) {
-      console.log(guys)
-    }
-  }, [guys])
 
   return (
     <AppLayout title="Home Page">
-      <Row>
-        {/* <Col xxl={4}>
-          <Card
-            name="Leanne Graham"
-            username="Bret"
-            email="Sincere@april.biz"
-            avatar={process.env.REACT_APP_DICEBEAE_AVATARS + '/avataaars/Bret.svg'}
-            phone="56565656"
-            website="asdasdasd"
-            address="asdasd"
-            company="asdasd"
-            location={{ lat: '', lng: '' }}
-          />
-        </Col> */}
-
-        {[...Array(8)].map((_el, i) => (
-          <Col xxl={4} key={i}>
-            <LoadingCart />
-          </Col>
-        ))}
-      </Row>
+      <Col span={20} offset={2}>
+        <Row>
+          {guys.loading &&
+            [...Array(8)].map((_el, i) => (
+              <Lib.C.Column key={i}>
+                <LoadingCart />
+              </Lib.C.Column>
+            ))}
+          {!guys.loading &&
+            guys.response &&
+            guys.response.length > 0 &&
+            guys.response.map(guy => (
+              <Lib.C.Column key={guy.id}>
+                <Card
+                  name={guy.name}
+                  username={guy.username}
+                  email={guy.email}
+                  avatar={process.env.REACT_APP_DICEBEAE_AVATARS + `/avataaars/${guy.username}.svg`}
+                  phone={guy.phone}
+                  website={guy.website}
+                  address={guy.address.city}
+                  company={guy.company.name}
+                  location={{ lat: guy.address.geo.lat, lng: guy.address.geo.lng }}
+                />
+              </Lib.C.Column>
+            ))}
+          {!guys.loading && !guys.response && (
+            <Lib.S.EmptyContainer>
+              <Empty />
+            </Lib.S.EmptyContainer>
+          )}
+        </Row>
+      </Col>
     </AppLayout>
   )
 }
