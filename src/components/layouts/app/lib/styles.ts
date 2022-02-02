@@ -13,6 +13,7 @@ export const AppLayoutContainer = styled.div`
   .layoutContainer {
     display: flex;
     min-height: 100vh;
+    max-height: 100vh;
 
     > .headerContainer {
       padding: 0 24px;
@@ -25,6 +26,7 @@ export const AppLayoutContainer = styled.div`
     > .childrenContainer {
       flex: 1;
       padding: 24px;
+      overflow: auto;
     }
   }
 `
